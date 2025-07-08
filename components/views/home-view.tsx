@@ -50,7 +50,7 @@ export function HomeView({
                   <RotatingText texts={rotatingTexts} className="mt-4 block min-h-[1.2em]" interval={2500} />
                 </h1>
                 <p className="max-w-[700px] text-muted-foreground md:text-xl mx-auto transition-all duration-300 hover:text-foreground/80">
-                  Trade with up to 100x leverage on the first DEX built exclusively for memecoins. No KYC. No limits.
+                  Trade with leverage on the first DEX built exclusively for memecoins. No KYC. No limits.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">

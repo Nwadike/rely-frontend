@@ -7,13 +7,13 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Rely Exchange - Long & Short Your Favorite Memecoins",
-  description: "Trade with up to 100x leverage on the first DEX built exclusively for memecoins. No KYC. No limits.",
+  title: "Rely Exchange",
+  description: "Rely Exchange is a decentralized platform to trade memecoins with leverage, create bets, stream crypto dares, and launch perpetual tokens — all on chain",
   icons: {
     icon: "/favicon.ico",
     apple: "/logo.png",
   },
-  generator: "v0.dev",
+  generator: "Rely Team",
 }
 
 export default function RootLayout({
