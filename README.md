@@ -1,31 +1,58 @@
-# 🪙 Rely Exchange — Frontend
+# 🐶 Rely Exchange — Trade Memecoins Like Never Before
 
-Welcome to the **frontend for Rely Exchange**, a fast and elegant decentralized exchange (DEX) interface. This project delivers a clean user experience for swapping tokens and interacting with the blockchain in real time.
+Welcome to **Rely Exchange**, the ultimate decentralized exchange (DEX) tailored for the **memecoin market**. Rely empowers you to trade, speculate, launch, and interact with cutting-edge features — all within a single crypto-native platform.
 
 ---
 
-## 🚀 Features
+## 🚀 Platform Highlights
 
-- 🔁 Swap tokens seamlessly
-- 💼 Wallet connection (MetaMask, WalletConnect)
-- 📊 Token stats and charts
-- ⚡ Fast load times with Vite
-- 🌙 Light/dark mode (if supported)
-- 📱 Fully responsive for mobile & desktop
+### 📈 Long & Short
+
+Trade memecoins with up to **100x leverage**. Whether you're bullish or bearish, use **perpetual contracts** to:
+
+- Go long on rising memecoin trends
+- Go short during dips
+- Use advanced DeFi leverage tools without KYC
+
+### 🚀 Launch Perp Memecoins
+
+Create and list your **own perpetual memecoin contracts**. Set the rules. Provide liquidity. Build a community.
+
+- Customizable launch parameters
+- Permissionless listing
+- Token traction tools included
+
+### 🎯 Bet on Anything
+
+Use Rely’s prediction markets to place bets on:
+
+- Crypto prices
+- Sports outcomes
+- Real-world events
+
+All powered by our **governance token**, with decentralized resolution and transparent odds.
+
+### 🎥 Dare Streamers
+
+Welcome to the intersection of **DeFi + entertainment**. Watch live streamers and:
+
+- Dare them to do challenges
+- Pay using our governance token
+- Earn rewards for interaction
 
 ---
 
 ## 🧱 Tech Stack
 
-- ⚛️ [React](https://reactjs.org/)
-- ⚡ [Vite](https://vitejs.dev/)
-- 💅 [Tailwind CSS](https://tailwindcss.com/)
-- 🧠 Web3 via [ethers.js](https://docs.ethers.org/) or [wagmi.sh](https://wagmi.sh/) *(if used)*
-- 🎨 Heroicons or Lucide (for icons)
+- ⚛️ [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- 💅 Tailwind CSS
+- 📦 State management (Zustand, Redux, or similar)
+- 🧠 Web3 via Ethers.js or Wagmi
+- 🔐 WalletConnect, MetaMask, and more
 
 ---
 
-## 📦 Getting Started
+## ⚙️ Getting Started
 
 ### 1. Clone the repository
 
@@ -35,8 +62,6 @@ cd rely-frontend
 ```
 
 ### 2. Install dependencies
-
-Make sure you're using **Node.js 18+**.
 
 ```bash
 npm install
@@ -48,11 +73,7 @@ npm install
 npm run dev
 ```
 
-Then open your browser and go to:
-
-```
-http://localhost:5173
-```
+Go to `http://localhost:5173`.
 
 ### 4. Build for production
 
@@ -60,62 +81,31 @@ http://localhost:5173
 npm run build
 ```
 
-This creates an optimized version in the `dist/` folder.
-
 ---
 
-## ⚙️ Environment Variables
 
-You can define runtime settings in a `.env` file at the root.
-
-Create `.env` based on the provided `.env.example`:
-
-```bash
-cp .env.example .env
-```
-
-Fill in the variables as needed:
-
-```env
-VITE_API_URL=https://api.rely.exchange
-VITE_CONTRACT_ADDRESS=0xYourSmartContract
-VITE_CHAIN_ID=1
-```
-
-You can access these in code via `import.meta.env.VITE_...`.
-
----
-
-## 📁 Project Structure
+## 📁 Folder Structure
 
 ```bash
 rely-frontend/
-├── public/              # Static files
+├── public/
 ├── src/
-│   ├── assets/          # Icons, images
-│   ├── components/      # UI components (buttons, cards, etc.)
-│   ├── pages/           # App pages and routes
-│   ├── App.jsx          # Main app layout
-│   └── main.jsx         # Entry point
-├── .env.example         # Sample environment file
-├── index.html           # HTML template
-├── package.json         # Scripts and dependencies
-├── tailwind.config.js   # Tailwind configuration
-└── vite.config.js       # Vite configuration
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── App.jsx
+│   └── main.jsx
+├── .env.example
+├── index.html
+├── tailwind.config.js
+└── vite.config.js
 ```
 
 ---
 
 ## 🌐 Deployment
 
-You can deploy this frontend to any static hosting service like:
-
-- [Vercel](https://vercel.com/)
-- [Netlify](https://netlify.com/)
-- [Cloudflare Pages](https://pages.cloudflare.com/)
-- AWS S3 + CloudFront
-
-> If you need help deploying to Vercel, just run:
+Deploy to Vercel
 
 ```bash
 npx vercel
@@ -125,35 +115,23 @@ npx vercel
 
 ## 🤝 Contributing
 
-We welcome community contributions!
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -am 'Add feature'`
-4. Push to the branch: `git push origin feature/my-feature`
-5. Create a pull request
+Pull requests welcome! Fork, branch, and PR.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
+MIT License. See `LICENSE`.
 
 ---
 
 ## 📧 Contact
 
-For questions, ideas, or collaborations:
-
-- 📩 Email: [team@rely.exchange](mailto:team@rely.exchange)
-- 🌐 Website: [https://rely.exchange](https://rely.exchange) *(coming soon)*
+- Email: [team@rely.exchange](mailto:team@rly.exchange)
+- Website: [https://rely.exchange](https://rly.exchange)
 
 ---
 
 ## ⭐️ Support
 
-If you find this project useful:
-
-- Give us a ⭐️ on GitHub
-- Share it with others building in Web3
-- Contribute improvements!
+If you love memecoins, leverage, and crazy prediction markets — give us a ⭐️ and help us spread the word.
