@@ -127,8 +127,8 @@ MIT License. See `LICENSE`.
 
 ## 📧 Contact
 
-- Email: [team@rely.exchange](mailto:team@rly.exchange)
-- Website: [https://rely.exchange](https://rly.exchange)
+- Email: [team@rly.exchange](mailto:team@rly.exchange)
+- Website: [https://rly.exchange](https://rly.exchange)
 
 ---
 
