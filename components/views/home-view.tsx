@@ -28,7 +28,7 @@ export function HomeView({
     "Long & Short Memecoins",
     "Bet on Anything",
     "Get Paid to Perform Dares Live",
-    "Launch Your Own Perpetual Memecoin",
+    "Launch Your Own Perp Memecoin",
   ]
 
   return (
