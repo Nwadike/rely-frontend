@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ScrollReveal } from "@/components/scroll-reveal"
+import { AnimatedIcon } from "@/components/ui/animated-icon"
 import {
   Coins,
   TrendingUp,
@@ -22,6 +23,7 @@ import {
   Calendar,
   Lock,
   Rocket,
+  FileText,
 } from "lucide-react"
 
 type TokenSubView = "info" | "presale"
@@ -108,31 +110,43 @@ export function TokenView() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted relative overflow-hidden">
+      <section className="w-full py-16 sm:py-24 md:py-32 lg:py-40 bg-gradient-to-b from-background via-background to-muted relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] bg-[size:32px_32px] opacity-30 animate-parallax" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(120,119,198,0.1),transparent_50%)]" />
+
         <div className="container px-4 md:px-6 relative z-10">
           <ScrollReveal direction="fade">
-            <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <div className="space-y-4">
+            <div className="flex flex-col items-center justify-center space-y-8 md:space-y-12 text-center">
+              <div className="space-y-6 md:space-y-8">
                 <Badge
-                  className="inline-flex bg-primary text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="inline-flex bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg animate-breathe px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium rounded-lg"
                   variant="secondary"
                 >
                   Governance Token
                 </Badge>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none max-w-4xl">
-                  Meet <span className="rainbow-text">$RELY</span> Token
+                <h1 className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] xl:text-[72px] font-light tracking-[0.5px] leading-[1.1] max-w-5xl transition-all duration-300 ease-in-out px-4">
+                  Meet <span className="text-foreground">$RELY</span> Token
                 </h1>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl mx-auto">
+                <p className="max-w-[750px] text-base sm:text-lg md:text-[20px] leading-[1.6] text-muted-foreground mx-auto transition-all duration-300 ease-in-out hover:text-foreground/90 px-4">
                   The governance token that powers Rely Exchange. Stake, vote, and earn rewards while shaping the future
                   of memecoin trading.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <GlassButton size="lg" onClick={handleBuyRelyClick} className="gap-1 group">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4">
+                <GlassButton
+                  size="lg"
+                  className="gap-2 group shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-6 py-3 md:px-8 md:py-4 text-base md:text-[18px] font-medium tracking-[0.5px] leading-[1.4] rounded-lg hover:animate-pulse-glow w-full sm:w-auto"
+                  onClick={handleBuyRelyClick}
+                >
                   Buy $RELY
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <AnimatedIcon icon={ArrowUpRight} variant="bounce" className="h-4 w-4 md:h-5 md:w-5" />
                 </GlassButton>
-                <GlassButton size="lg" variant="outline">
+                <GlassButton
+                  size="lg"
+                  variant="outline"
+                  className="shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-6 py-3 md:px-8 md:py-4 text-base md:text-[18px] font-medium tracking-[0.5px] leading-[1.4] rounded-lg w-full sm:w-auto"
+                >
+                  <AnimatedIcon icon={FileText} variant="3d" className="h-4 w-4 md:h-5 md:w-5 mr-2" />
                   View Whitepaper
                 </GlassButton>
               </div>

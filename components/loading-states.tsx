@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { GlassButton } from "@/components/ui/glass-button"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { TokenRowSkeleton, FeatureCardSkeleton, StepSkeleton } from "@/components/loading-skeleton"
-import { ArrowUpRight, Rocket, Video, Dice6, Loader2, TrendingUp, TrendingDown } from "lucide-react"
+import { Loader2, TrendingUp, TrendingDown, Link2, Eye, Users, Unlock } from "lucide-react"
 
 interface LoadingTokensProps {
   onLoadComplete: () => void
@@ -246,28 +246,40 @@ export function TokensContent() {
 export function FeaturesContent() {
   const features = [
     {
-      icon: ArrowUpRight,
-      title: "Long & Short",
+      icon: Link2,
+      title: "On-chain Execution",
       description:
-        "Trade memecoins with up to 100x leverage. Go long on rising prices or short on falling markets with advanced perpetual contracts.",
+        "No middlemen or delays. Every trade executes directly on-chain with full transparency and trustless settlement.",
+      color: "from-blue-500/20 to-cyan-500/10",
+      iconColor: "text-blue-500",
+      glowColor: "group-hover:drop-shadow-[0_0_12px_rgba(59,130,246,0.5)]",
     },
     {
-      icon: Rocket,
-      title: "Launch Perp Memecoin",
+      icon: Eye,
+      title: "Transparent Pricing",
       description:
-        "Create and launch your own perpetual memecoin contracts. Set parameters, manage liquidity, and build your community around your token.",
+        "Real-time market data for every asset. See live pricing, implied volatility, and order book depth before you trade.",
+      color: "from-purple-500/20 to-pink-500/10",
+      iconColor: "text-purple-500",
+      glowColor: "group-hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.5)]",
     },
     {
-      icon: Dice6,
-      title: "Bet",
+      icon: Users,
+      title: "Community Governance",
       description:
-        "Create prediction markets and bet on real-world events. From crypto prices to sports outcomes, bet on anything with our governance token.",
+        "The rules evolve through DAO proposals. Vote on new markets, fee structures, and protocol upgrades.",
+      color: "from-green-500/20 to-emerald-500/10",
+      iconColor: "text-green-500",
+      glowColor: "group-hover:drop-shadow-[0_0_12px_rgba(34,197,94,0.5)]",
     },
     {
-      icon: Video,
-      title: "Dare",
+      icon: Unlock,
+      title: "Permissionless Access",
       description:
-        "Watch live streamers and dare them to do challenges by paying with our governance token. Interactive entertainment meets DeFi rewards.",
+        "Trade from anywhere, anytime. No KYC, no restrictions. Just connect your wallet and start trading options.",
+      color: "from-orange-500/20 to-yellow-500/10",
+      iconColor: "text-orange-500",
+      glowColor: "group-hover:drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]",
     },
   ]
 
@@ -279,13 +291,16 @@ export function FeaturesContent() {
             className="glass-card rounded-2xl p-8 transition-all duration-500 hover:scale-[1.02] group cursor-pointer animate-in fade-in slide-in-from-bottom-4 relative overflow-hidden"
             style={{ animationDelay: `${i * 100}ms` }}
           >
-            {/* Glare effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             <div className="flex flex-col items-center space-y-6 text-center relative z-10">
-              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/20 group-hover:scale-110">
-                <feature.icon className="h-10 w-10 text-primary transition-transform duration-300 group-hover:rotate-6" />
+              <div
+                className={`flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${feature.color} transition-all duration-300 group-hover:scale-110 animate-float`}
+              >
+                <feature.icon
+                  className={`h-10 w-10 ${feature.iconColor} ${feature.glowColor} transition-all duration-300 group-hover:rotate-6 group-hover:scale-110`}
+                />
               </div>
               <div className="space-y-3">
                 <h3 className="text-2xl font-bold transition-colors duration-300 group-hover:text-primary">
@@ -307,19 +322,19 @@ export function StepsContent() {
   const steps = [
     {
       number: 1,
-      title: "Connect Wallet",
+      title: "Create Account",
       description:
-        "Link your Web3 wallet to Rely Exchange with a single click. We support MetaMask, WalletConnect, and more.",
+        "Connect your Web3 wallet or sign up with email. Trade your way — MetaMask, WalletConnect, or traditional login.",
     },
     {
       number: 2,
-      title: "Fund Your Account",
-      description: "Deposit USDC, USDT, or other stablecoins directly to your trading account to use as collateral.",
+      title: "Deposit Collateral",
+      description: "Fund your account with USDC or ETH. Start trading with as little as $10 in collateral.",
     },
     {
       number: 3,
-      title: "Start Trading",
-      description: "Choose a memecoin, select your leverage, and open long or short positions with just a few clicks.",
+      title: "Trade Options",
+      description: "Select your asset, strike price, and expiry. Execute calls and puts with a single click.",
     },
   ]
 

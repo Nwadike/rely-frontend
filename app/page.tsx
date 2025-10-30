@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { GlassButton } from "@/components/ui/glass-button"
-import { Rocket, Dice6, Video, Vote, Coins, Users } from "lucide-react"
+import { TrendingUp, Zap, MoreHorizontal, Vote, Coins } from "lucide-react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { MobileMenu } from "@/components/mobile-menu"
 import { Preloader } from "@/components/preloader"
 import { HomeView } from "@/components/views/home-view"
@@ -19,13 +20,17 @@ import { TermsOfServiceView } from "@/components/views/terms-of-service-view"
 
 type ViewType =
   | "home"
-  | "launch"
-  | "bet"
-  | "dare"
+  | "trade"
+  | "stake"
   | "governance"
   | "token"
   | "presale"
-  | "community"
+  | "about"
+  | "affiliate"
+  | "support"
+  | "knowledge-base"
+  | "faqs"
+  | "contact"
   | "privacy-policy"
   | "terms-of-service"
 
@@ -39,30 +44,28 @@ export default function Home() {
   const [currentView, setCurrentView] = useState<ViewType>("home")
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
 
-  // Initialize view from URL
   useEffect(() => {
     const path = window.location.pathname.slice(1) as ViewType
     if (
       [
         "home",
-        "launch",
-        "bet",
-        "dare",
+        "trade",
+        "stake",
         "governance",
         "token",
         "presale",
-        "community",
+        "about",
+        "affiliate",
+        "support",
+        "knowledge-base",
+        "faqs",
+        "contact",
         "privacy-policy",
         "terms-of-service",
       ].includes(path)
     ) {
       setCurrentView(path || "home")
     }
-  }, [])
-
-  // Update current year
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear())
   }, [])
 
   const toggleMobileMenu = () => {
@@ -73,23 +76,20 @@ export default function Home() {
     setCurrentView(view)
     setIsMobileMenuOpen(false)
 
-    // Update URL without page reload
     const url = view === "home" ? "/" : `/${view}`
     window.history.pushState({}, "", url)
 
-    // Scroll to top when changing views
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  const handleLaunchApp = () => {
-    window.open("/dapp", "_blank")
+  const handleLogin = () => {
+    router.push("/login")
   }
 
   const handleDappNavigation = () => {
     window.open("/dapp", "_blank")
   }
 
-  // Handle scroll effect for header
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
@@ -100,7 +100,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Add overflow-x-hidden to html and body to prevent horizontal scrolling
   useEffect(() => {
     document.documentElement.style.overflowX = "hidden"
     document.body.style.overflowX = "hidden"
@@ -111,7 +110,6 @@ export default function Home() {
     }
   }, [])
 
-  // Fix body scroll when mobile menu closes
   useEffect(() => {
     if (!isMobileMenuOpen) {
       document.body.style.overflow = ""
@@ -136,21 +134,21 @@ export default function Home() {
         return <PrivacyPolicyView />
       case "terms-of-service":
         return <TermsOfServiceView />
-      case "community":
-        // Scroll to community section on home page
-        setCurrentView("home")
-        setTimeout(() => {
-          document.getElementById("community")?.scrollIntoView({ behavior: "smooth" })
-        }, 100)
+      case "trade":
+      case "stake":
+      case "about":
+      case "affiliate":
+      case "support":
+      case "knowledge-base":
+      case "faqs":
+      case "contact":
         return (
-          <HomeView
-            featuresLoaded={featuresLoaded}
-            stepsLoaded={stepsLoaded}
-            setFeaturesLoaded={setFeaturesLoaded}
-            setStepsLoaded={setStepsLoaded}
-            onNavigate={handleNavigation}
-            onDappNavigation={handleDappNavigation}
-          />
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold mb-4 capitalize">{currentView.replace("-", " ")}</h1>
+              <p className="text-muted-foreground">This page is coming soon.</p>
+            </div>
+          </div>
         )
       default:
         return (
@@ -170,7 +168,6 @@ export default function Home() {
     <>
       {!preloaderComplete && <Preloader onLoadComplete={() => setPreloaderComplete(true)} />}
 
-      {/* Fixed Header - Always at top */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-300 ${
           isScrolled
@@ -190,53 +187,36 @@ export default function Home() {
             />
           </div>
 
-          {/* Desktop Navigation - Centered and closer spacing */}
           <nav className="hidden md:flex items-center justify-center space-x-4 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
             <button
-              onClick={() => handleNavigation("launch")}
+              onClick={() => handleNavigation("trade")}
               className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                currentView === "launch" ? "text-primary" : "text-foreground/80 hover:text-primary"
+                currentView === "trade" ? "text-primary" : "text-foreground/80 hover:text-primary"
               }`}
             >
               <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                <Rocket className="h-4 w-4" />
+                <TrendingUp className="h-4 w-4" />
               </div>
-              Launch
+              Trade
               <span
                 className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
-                  currentView === "launch" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  currentView === "trade" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                 }`}
               />
             </button>
             <button
-              onClick={() => handleNavigation("bet")}
+              onClick={() => handleNavigation("stake")}
               className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                currentView === "bet" ? "text-primary" : "text-foreground/80 hover:text-primary"
+                currentView === "stake" ? "text-primary" : "text-foreground/80 hover:text-primary"
               }`}
             >
               <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                <Dice6 className="h-4 w-4" />
+                <Zap className="h-4 w-4" />
               </div>
-              Bet
+              Stake
               <span
                 className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
-                  currentView === "bet" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                }`}
-              />
-            </button>
-            <button
-              onClick={() => handleNavigation("dare")}
-              className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                currentView === "dare" ? "text-primary" : "text-foreground/80 hover:text-primary"
-              }`}
-            >
-              <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                <Video className="h-4 w-4" />
-              </div>
-              Dare
-              <span
-                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
-                  currentView === "dare" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  currentView === "stake" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                 }`}
               />
             </button>
@@ -272,32 +252,45 @@ export default function Home() {
                 }`}
               />
             </button>
-            <button
-              onClick={() => handleNavigation("community")}
-              className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                currentView === "community" ? "text-primary" : "text-foreground/80 hover:text-primary"
-              }`}
-            >
-              <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                <Users className="h-4 w-4" />
-              </div>
-              Community
-              <span
-                className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
-                  currentView === "community" ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                }`}
-              />
-            </button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
+                    ["about", "affiliate", "support", "knowledge-base", "faqs", "contact"].includes(currentView)
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                    <MoreHorizontal className="h-4 w-4" />
+                  </div>
+                  More
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
+                      ["about", "affiliate", "support", "knowledge-base", "faqs", "contact"].includes(currentView)
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem onClick={() => handleNavigation("about")}>About</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleNavigation("affiliate")}>Affiliate Program</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleNavigation("support")}>Support Center</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleNavigation("knowledge-base")}>Knowledge Base</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleNavigation("faqs")}>FAQs</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleNavigation("contact")}>Contact Us</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
-          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <GlassButton size="sm" onClick={handleLaunchApp}>
-              Launch App
+            <GlassButton size="sm" onClick={handleLogin}>
+              Login
             </GlassButton>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <GlassButton variant="ghost" size="sm" onClick={toggleMobileMenu}>
               <svg
@@ -314,7 +307,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Mobile Menu */}
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onToggle={toggleMobileMenu}
@@ -322,10 +314,8 @@ export default function Home() {
         onNavigate={handleNavigation}
       />
 
-      {/* Main Content */}
       <main className="flex-1 overflow-x-hidden">{renderCurrentView()}</main>
 
-      {/* Footer */}
       <footer className="border-t bg-background">
         <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
           <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">

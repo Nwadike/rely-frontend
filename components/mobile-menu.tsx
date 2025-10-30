@@ -4,13 +4,27 @@ import type React from "react"
 
 import { GlassButton } from "@/components/ui/glass-button"
 import { useEffect, useState, useRef } from "react"
-import { Home, Rocket, Dice6, Video, Vote, Coins, Users, X } from "lucide-react"
+import { Home, TrendingUp, Zap, Vote, Coins, MoreHorizontal, ChevronDown, X, LogIn } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface MobileMenuProps {
   isOpen: boolean
   onToggle: () => void
   currentView: string
-  onNavigate: (view: "home" | "launch" | "bet" | "dare" | "governance" | "token" | "community") => void
+  onNavigate: (
+    view:
+      | "home"
+      | "trade"
+      | "stake"
+      | "governance"
+      | "token"
+      | "about"
+      | "affiliate"
+      | "support"
+      | "knowledge-base"
+      | "faqs"
+      | "contact",
+  ) => void
 }
 
 export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: MobileMenuProps) {
@@ -19,7 +33,9 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState(0)
   const [pressedButton, setPressedButton] = useState<string | null>(null)
+  const [isMoreExpanded, setIsMoreExpanded] = useState(false)
   const sidebarRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
 
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50
@@ -98,12 +114,19 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
 
   const navigationItems = [
     { key: "home", label: "Home", icon: Home },
-    { key: "launch", label: "Launch", icon: Rocket },
-    { key: "bet", label: "Bet", icon: Dice6 },
-    { key: "dare", label: "Dare", icon: Video },
+    { key: "trade", label: "Trade", icon: TrendingUp },
+    { key: "stake", label: "Stake", icon: Zap },
     { key: "governance", label: "Governance", icon: Vote },
     { key: "token", label: "Token", icon: Coins },
-    { key: "community", label: "Community", icon: Users },
+  ]
+
+  const moreItems = [
+    { key: "about", label: "About" },
+    { key: "affiliate", label: "Affiliate Program" },
+    { key: "support", label: "Support Center" },
+    { key: "knowledge-base", label: "Knowledge Base" },
+    { key: "faqs", label: "FAQs" },
+    { key: "contact", label: "Contact Us" },
   ]
 
   const handleNavigation = (view: any) => {
@@ -111,9 +134,9 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
     onToggle() // Close menu after navigation
   }
 
-  const handleLaunchApp = () => {
-    window.open("about:blank", "_blank")
-    onToggle() // Close menu after opening
+  const handleLogin = () => {
+    router.push("/login")
+    onToggle() // Close menu after navigation
   }
 
   // Micro-interaction handlers
@@ -264,6 +287,69 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
                     </GlassButton>
                   )
                 })}
+
+                {/* More expandable section */}
+                <div className="mt-1">
+                  <GlassButton
+                    variant="ghost"
+                    onClick={() => setIsMoreExpanded(!isMoreExpanded)}
+                    className={`group relative w-full text-left p-3 rounded-lg transition-all duration-300 ease-out transform overflow-hidden justify-start text-foreground/80 hover:text-foreground hover:bg-background/15 hover:backdrop-blur-sm hover:scale-[1.01] hover:shadow-md active:scale-95 ${
+                      isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+                    }`}
+                    style={{
+                      transitionDelay: isOpen ? `${navigationItems.length * 50}ms` : "0ms",
+                    }}
+                  >
+                    <div className="flex items-center gap-3 relative z-10">
+                      <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+                        <MoreHorizontal className="h-4 w-4" />
+                      </div>
+                      <span className="text-sm font-medium transition-all duration-300">More</span>
+                      <ChevronDown
+                        className={`ml-auto h-4 w-4 transition-transform duration-300 ${
+                          isMoreExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                    <div className="absolute left-0 top-0 h-full w-1 bg-primary transform scale-y-0 transition-transform duration-300 group-hover:scale-y-100 origin-center" />
+                  </GlassButton>
+
+                  {/* More dropdown items */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isMoreExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="pl-4 mt-1 space-y-1">
+                      {moreItems.map((item, index) => {
+                        const isActive = currentView === item.key
+                        const isPressed = pressedButton === item.key
+
+                        return (
+                          <GlassButton
+                            key={item.key}
+                            variant={isActive ? "default" : "ghost"}
+                            onClick={() => {
+                              handleButtonPress(item.key)
+                              setTimeout(() => handleNavigation(item.key as any), 100)
+                            }}
+                            className={`group relative w-full text-left p-2 pl-8 rounded-lg transition-all duration-300 ease-out transform overflow-hidden justify-start text-sm ${
+                              isActive
+                                ? "bg-primary/15 text-primary backdrop-blur-sm scale-[1.02] shadow-lg"
+                                : "text-foreground/70 hover:text-foreground hover:bg-background/10 hover:backdrop-blur-sm hover:scale-[1.01] active:scale-95"
+                            } ${isPressed ? "scale-95 bg-primary/25" : ""}`}
+                          >
+                            {isPressed && <div className="absolute inset-0 bg-primary/20 rounded-lg animate-ping" />}
+                            <span className="relative z-10">{item.label}</span>
+                            {isActive && (
+                              <div className="ml-auto w-1.5 h-1.5 bg-primary rounded-full animate-pulse transition-all duration-300" />
+                            )}
+                          </GlassButton>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
               </div>
             </nav>
           </div>
@@ -277,22 +363,22 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
             <GlassButton
               size="sm"
               className={`w-full gap-2 transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 relative overflow-hidden ${
-                pressedButton === "launch" ? "scale-95 shadow-inner" : ""
+                pressedButton === "login" ? "scale-95 shadow-inner" : ""
               }`}
               onClick={() => {
-                handleButtonPress("launch")
-                setTimeout(handleLaunchApp, 100)
+                handleButtonPress("login")
+                setTimeout(handleLogin, 100)
               }}
             >
               {/* Button ripple effect */}
-              {pressedButton === "launch" && <div className="absolute inset-0 bg-white/20 animate-ping rounded-md" />}
+              {pressedButton === "login" && <div className="absolute inset-0 bg-white/20 animate-ping rounded-md" />}
 
-              <Rocket
+              <LogIn
                 className={`h-4 w-4 transition-all duration-300 ${
-                  pressedButton === "launch" ? "rotate-45 scale-110" : "group-hover:rotate-12"
+                  pressedButton === "login" ? "rotate-45 scale-110" : "group-hover:rotate-12"
                 }`}
               />
-              <span className="relative z-10">Launch App</span>
+              <span className="relative z-10">Login</span>
             </GlassButton>
           </div>
         </div>

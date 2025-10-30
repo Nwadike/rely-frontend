@@ -56,37 +56,37 @@ Welcome to the intersection of **DeFi + entertainment**. Watch live streamers an
 
 ### 1. Clone the repository
 
-```bash
+\`\`\`bash
 git clone https://github.com/yourusername/rely-frontend.git
 cd rely-frontend
-```
+\`\`\`
 
 ### 2. Install dependencies
 
-```bash
+\`\`\`bash
 npm install
-```
+\`\`\`
 
 ### 3. Start development server
 
-```bash
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
 Go to `http://localhost:5173`.
 
 ### 4. Build for production
 
-```bash
+\`\`\`bash
 npm run build
-```
+\`\`\`
 
 ---
 
 
 ## 📁 Folder Structure
 
-```bash
+\`\`\`bash
 rely-frontend/
 ├── public/
 ├── src/
@@ -99,7 +99,7 @@ rely-frontend/
 ├── index.html
 ├── tailwind.config.js
 └── vite.config.js
-```
+\`\`\`
 
 ---
 
@@ -107,9 +107,9 @@ rely-frontend/
 
 Deploy to Vercel
 
-```bash
+\`\`\`bash
 npx vercel
-```
+\`\`\`
 
 ---
 
