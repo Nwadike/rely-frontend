@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import { Vote, Shield, CheckCircle, Clock, TrendingUp } from "lucide-react"
 import { GlassButton } from "@/components/ui/glass-button"
+import { AnimatedIcon } from "@/components/ui/animated-icon"
 import GlareCard from "@/components/ui/glare-card"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -47,38 +48,41 @@ export function GovernanceView({ onDappNavigation }: GovernanceViewProps) {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-background to-muted">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-16 sm:py-24 md:py-32 lg:py-40 bg-gradient-to-b from-background via-background to-muted relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808018_1px,transparent_1px),linear-gradient(to_bottom,#80808018_1px,transparent_1px)] bg-[size:32px_32px] opacity-30 animate-parallax" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(120,119,198,0.1),transparent_50%)]" />
+
+        <div className="container px-4 md:px-6 relative z-10">
           <ScrollReveal direction="fade">
-            <div className="flex flex-col items-center justify-center space-y-8 text-center">
-              <div className="space-y-4">
+            <div className="flex flex-col items-center justify-center space-y-8 md:space-y-12 text-center">
+              <div className="space-y-6 md:space-y-8">
                 <Badge
-                  className="inline-flex bg-primary text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="inline-flex bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg animate-breathe px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium rounded-lg"
                   variant="secondary"
                 >
                   Governance
                 </Badge>
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none max-w-4xl">
-                  Shape the Future of <span className="rainbow-text">Rely Exchange</span>
+                <h1 className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] xl:text-[72px] font-light tracking-[0.5px] leading-[1.1] max-w-5xl transition-all duration-300 ease-in-out px-4">
+                  Shape the Future of <span className="text-foreground">Rely Exchange</span>
                 </h1>
-                <p className="max-w-[700px] text-muted-foreground md:text-xl mx-auto">
+                <p className="max-w-[750px] text-base sm:text-lg md:text-[20px] leading-[1.6] text-muted-foreground mx-auto transition-all duration-300 ease-in-out hover:text-foreground/90 px-4">
                   Participate in governance decisions, vote on proposals, and help steer the direction of the platform
                   with RELY tokens.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4">
                 <GlassButton
                   size="lg"
-                  className="gap-1 transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95 group"
+                  className="gap-2 group shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-6 py-3 md:px-8 md:py-4 text-base md:text-[18px] font-medium tracking-[0.5px] leading-[1.4] rounded-lg hover:animate-pulse-glow w-full sm:w-auto"
                   onClick={onDappNavigation}
                 >
                   Vote Now
-                  <Vote className="h-4 w-4 transition-transform duration-300 group-hover:rotate-12" />
+                  <AnimatedIcon icon={Vote} variant="bounce" className="h-4 w-4 md:h-5 md:w-5" />
                 </GlassButton>
                 <GlassButton
                   size="lg"
                   variant="outline"
-                  className="transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-primary/5 active:scale-95"
+                  className="shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-6 py-3 md:px-8 md:py-4 text-base md:text-[18px] font-medium tracking-[0.5px] leading-[1.4] rounded-lg w-full sm:w-auto"
                   onClick={onDappNavigation}
                 >
                   Create Proposal
