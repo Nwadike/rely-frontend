@@ -17,6 +17,11 @@ import { TokenView } from "@/components/views/token-view"
 import { PresaleView } from "@/components/views/presale-view"
 import { PrivacyPolicyView } from "@/components/views/privacy-policy-view"
 import { TermsOfServiceView } from "@/components/views/terms-of-service-view"
+import { AboutView } from "@/components/views/about-view"
+import { SupportView } from "@/components/views/support-view"
+import { KnowledgeBaseView } from "@/components/views/knowledge-base-view"
+import { FAQsView } from "@/components/views/faqs-view"
+import { ContactView } from "@/components/views/contact-view"
 
 type ViewType =
   | "home"
@@ -134,14 +139,20 @@ export default function Home() {
         return <PrivacyPolicyView />
       case "terms-of-service":
         return <TermsOfServiceView />
+      case "about":
+        return <AboutView onDappNavigation={handleDappNavigation} />
+      case "affiliate":
+        return <SupportView onDappNavigation={handleDappNavigation} />
+      case "support":
+        return <SupportView onDappNavigation={handleDappNavigation} />
+      case "knowledge-base":
+        return <KnowledgeBaseView onDappNavigation={handleDappNavigation} />
+      case "faqs":
+        return <FAQsView onDappNavigation={handleDappNavigation} />
+      case "contact":
+        return <ContactView onDappNavigation={handleDappNavigation} />
       case "trade":
       case "stake":
-      case "about":
-      case "affiliate":
-      case "support":
-      case "knowledge-base":
-      case "faqs":
-      case "contact":
         return (
           <div className="min-h-screen flex items-center justify-center">
             <div className="text-center">
