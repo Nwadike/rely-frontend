@@ -8,9 +8,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Rely Exchange",
-  description: "Rely Exchange is a decentralized platform to trade memecoins with leverage, create bets, stream crypto dares, and launch perpetual tokens — all on chain",
+  description:
+    "Rely Exchange is a decentralized platform to trade memecoins with leverage, create bets, stream crypto dares, and launch perpetual tokens — all on chain",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.png",
     apple: "/logo.png",
   },
   generator: "Rely Team",

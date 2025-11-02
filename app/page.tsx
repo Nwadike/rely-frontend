@@ -17,6 +17,13 @@ import { TokenView } from "@/components/views/token-view"
 import { PresaleView } from "@/components/views/presale-view"
 import { PrivacyPolicyView } from "@/components/views/privacy-policy-view"
 import { TermsOfServiceView } from "@/components/views/terms-of-service-view"
+import { AboutView } from "@/components/views/about-view"
+import { SupportView } from "@/components/views/support-view"
+import { FAQsView } from "@/components/views/faqs-view"
+import { ContactView } from "@/components/views/contact-view"
+import { AffiliateView } from "@/components/views/affiliate-view"
+import { TradeView } from "@/components/views/trade-view"
+import { StakeView } from "@/components/views/stake-view"
 
 type ViewType =
   | "home"
@@ -28,7 +35,6 @@ type ViewType =
   | "about"
   | "affiliate"
   | "support"
-  | "knowledge-base"
   | "faqs"
   | "contact"
   | "privacy-policy"
@@ -57,7 +63,6 @@ export default function Home() {
         "about",
         "affiliate",
         "support",
-        "knowledge-base",
         "faqs",
         "contact",
         "privacy-policy",
@@ -134,22 +139,20 @@ export default function Home() {
         return <PrivacyPolicyView />
       case "terms-of-service":
         return <TermsOfServiceView />
-      case "trade":
-      case "stake":
       case "about":
+        return <AboutView onDappNavigation={handleDappNavigation} />
       case "affiliate":
+        return <AffiliateView onDappNavigation={handleDappNavigation} />
       case "support":
-      case "knowledge-base":
+        return <SupportView onDappNavigation={handleDappNavigation} />
       case "faqs":
+        return <FAQsView onDappNavigation={handleDappNavigation} />
       case "contact":
-        return (
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold mb-4 capitalize">{currentView.replace("-", " ")}</h1>
-              <p className="text-muted-foreground">This page is coming soon.</p>
-            </div>
-          </div>
-        )
+        return <ContactView onDappNavigation={handleDappNavigation} />
+      case "trade":
+        return <TradeView />
+      case "stake":
+        return <StakeView />
       default:
         return (
           <HomeView
@@ -256,7 +259,7 @@ export default function Home() {
               <DropdownMenuTrigger asChild>
                 <button
                   className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                    ["about", "affiliate", "support", "knowledge-base", "faqs", "contact"].includes(currentView)
+                    ["about", "affiliate", "support", "faqs", "contact"].includes(currentView)
                       ? "text-primary"
                       : "text-foreground/80 hover:text-primary"
                   }`}
@@ -267,7 +270,7 @@ export default function Home() {
                   More
                   <span
                     className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform origin-left transition-transform duration-200 ${
-                      ["about", "affiliate", "support", "knowledge-base", "faqs", "contact"].includes(currentView)
+                      ["about", "affiliate", "support", "faqs", "contact"].includes(currentView)
                         ? "scale-x-100"
                         : "scale-x-0 group-hover:scale-x-100"
                     }`}
@@ -278,7 +281,6 @@ export default function Home() {
                 <DropdownMenuItem onClick={() => handleNavigation("about")}>About</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleNavigation("affiliate")}>Affiliate Program</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleNavigation("support")}>Support Center</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleNavigation("knowledge-base")}>Knowledge Base</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleNavigation("faqs")}>FAQs</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleNavigation("contact")}>Contact Us</DropdownMenuItem>
               </DropdownMenuContent>
@@ -287,7 +289,7 @@ export default function Home() {
 
           <div className="hidden md:flex items-center space-x-4">
             <GlassButton size="sm" onClick={handleLogin}>
-              Login
+              Launch App
             </GlassButton>
           </div>
 

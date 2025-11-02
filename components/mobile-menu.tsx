@@ -12,18 +12,7 @@ interface MobileMenuProps {
   onToggle: () => void
   currentView: string
   onNavigate: (
-    view:
-      | "home"
-      | "trade"
-      | "stake"
-      | "governance"
-      | "token"
-      | "about"
-      | "affiliate"
-      | "support"
-      | "knowledge-base"
-      | "faqs"
-      | "contact",
+    view: "home" | "trade" | "stake" | "governance" | "token" | "about" | "affiliate" | "support" | "faqs" | "contact",
   ) => void
 }
 
@@ -124,7 +113,6 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
     { key: "about", label: "About" },
     { key: "affiliate", label: "Affiliate Program" },
     { key: "support", label: "Support Center" },
-    { key: "knowledge-base", label: "Knowledge Base" },
     { key: "faqs", label: "FAQs" },
     { key: "contact", label: "Contact Us" },
   ]
@@ -378,7 +366,7 @@ export function MobileMenu({ isOpen, onToggle, currentView, onNavigate }: Mobile
                   pressedButton === "login" ? "rotate-45 scale-110" : "group-hover:rotate-12"
                 }`}
               />
-              <span className="relative z-10">Login</span>
+              <span className="relative z-10">Launch App</span>
             </GlassButton>
           </div>
         </div>

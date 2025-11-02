@@ -24,14 +24,16 @@ import {
   Lock,
   Rocket,
   FileText,
+  Copy,
+  Check,
 } from "lucide-react"
 
 type TokenSubView = "info" | "presale"
 
 export function TokenView() {
   const [currentSubView, setCurrentSubView] = useState<TokenSubView>("info")
+  const [copied, setCopied] = useState(false)
 
-  // Updated tokenomics based on presale page
   const tokenomics = [
     { label: "Presale", value: "700,000,000 RELY", percentage: 70, color: "bg-green-500" },
     { label: "Liquidity", value: "150,000,000 RELY", percentage: 15, color: "bg-blue-500" },
@@ -107,6 +109,12 @@ export function TokenView() {
     window.open("/presale", "_blank")
   }
 
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText("TBA - Contract Not Deployed Yet")
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
@@ -168,6 +176,42 @@ export function TokenView() {
           </ScrollReveal>
 
           <div className="mx-auto max-w-6xl">
+            <ScrollReveal>
+              <Card className="glass-card mb-8">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/20 to-primary/10">
+                        <FileText className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold">Token Contract Address</h3>
+                        <p className="text-sm text-muted-foreground">Solana SPL Token</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 w-full md:w-auto">
+                      <div className="flex-1 md:flex-none px-4 py-2 rounded-lg bg-muted/50 font-mono text-sm">
+                        TBA - Contract Not Deployed Yet
+                      </div>
+                      <GlassButton size="sm" variant="outline" onClick={handleCopyAddress} className="gap-2">
+                        {copied ? (
+                          <>
+                            <Check className="h-4 w-4" />
+                            Copied
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="h-4 w-4" />
+                            Copy
+                          </>
+                        )}
+                      </GlassButton>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* Enhanced Pie Chart Visualization */}
               <ScrollReveal delay={100}>
