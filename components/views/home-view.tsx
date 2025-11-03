@@ -24,7 +24,7 @@ export function HomeView({
   onNavigate,
   onDappNavigation,
 }: HomeViewProps) {
-  const rotatingTexts = ["Trade Crypto Volatility.", "Without Permission.", "Buy Calls. Drop Puts.", "Stay in Control."]
+  const rotatingTexts = ["Trade Crypto's Volatility.", "Without Permission.", "Buy Calls. Drop Puts.", "Stay in Control."]
 
   return (
     <div className="min-h-screen pt-16">
@@ -57,7 +57,7 @@ export function HomeView({
                   <span className="text-balance font-normal">Without Permission.</span>
                 </h1>
                 <p className="max-w-[750px] text-base sm:text-lg md:text-[20px] leading-[1.6] text-muted-foreground mx-auto transition-all duration-300 ease-in-out hover:text-foreground/90 px-4">
-                  A community-powered options exchange where you can buy calls and puts on any asset — no limits, no
+                  A community-driven options exchange that empowers users to purchase call and put options — no limits, no
                   gatekeepers.
                 </p>
               </div>
@@ -119,15 +119,14 @@ export function HomeView({
             <div className="flex flex-col items-center justify-center space-y-6 text-center mb-16">
               <div className="space-y-6">
                 <div className="inline-block rounded-lg bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-                  Why It Exists
+                  OUr Mission
                 </div>
                 <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-medium tracking-[0.3px] leading-[1.3] transition-all duration-300 ease-in-out hover:text-primary/90 max-w-3xl mx-auto">
                   Built for Traders. Run by the Community.
                 </h2>
                 <p className="mx-auto max-w-[750px] text-[18px] leading-[1.6] text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground/90">
-                  A community-governed exchange where traders set the rules. Every decision, from fee structures to new
-                  markets, is voted on by the collective — transparent, on-chain, and owned by you.
-                </p>
+                  A community-governed exchange where traders have the power to shape the platform. Every decision-ranging from fee structutres to the introduction of new markets-is subject to collective scriutiny, ensuring transparency
+                  and accountability. Operating on-chain and fully owned by the community, Our platform empowers you to take control of your trading experience.
               </div>
             </div>
           </ScrollReveal>
