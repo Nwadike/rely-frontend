@@ -57,7 +57,7 @@ export function HomeView({
                   <span className="text-balance font-normal">Without Permission.</span>
                 </h1>
                 <p className="max-w-[750px] text-base sm:text-lg md:text-[20px] leading-[1.6] text-muted-foreground mx-auto transition-all duration-300 ease-in-out hover:text-foreground/90 px-4">
-                  A community-powered options exchange where you can buy calls and puts on any asset — no limits, no
+                  A community-driven options exchange that empowers users to purchase call and put options — no limits, no
                   gatekeepers.
                 </p>
               </div>
@@ -125,8 +125,8 @@ export function HomeView({
                   Built for Traders. Run by the Community.
                 </h2>
                 <p className="mx-auto max-w-[750px] text-[18px] leading-[1.6] text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground/90">
-                  A community-governed exchange where traders set the rules. Every decision, from fee structures to new
-                  markets, is voted on by the collective — transparent, on-chain, and owned by you.
+                  A community-governed exchange where traders have the power to shape the platform. Every decision-ranging from fee structutres to the introduction of new markets-is subject to collective scriutiny, ensuring transparency
+                  and accountability. Operating on-chain and fully owned by the community, Our platform empowers you to take control of your trading experience.
                 </p>
               </div>
             </div>
