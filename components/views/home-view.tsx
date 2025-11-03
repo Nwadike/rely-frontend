@@ -125,7 +125,7 @@ export function HomeView({
                   Built for Traders. Run by the Community.
                 </h2>
                 <p className="mx-auto max-w-[750px] text-[18px] leading-[1.6] text-muted-foreground transition-all duration-300 ease-in-out hover:text-foreground/90">
-                  A community-governed exchange where traders have the power to shape the platform. Every decision-ranging from fee structutres to the introduction of new markets-is subject to collective scriutiny, ensuring transparency
+                  A community-governed exchange where traders have the power to shape the platform. Every decision-ranging from fee structutres to the introduction of new markets-is subject to collective scrutiny, ensuring transparency
                   and accountability. Operating on-chain and fully owned by the community, Our platform empowers you to take control of your trading experience.
                 </p>
               </div>
