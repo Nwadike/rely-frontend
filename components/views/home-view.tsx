@@ -24,7 +24,6 @@ export function HomeView({
   onNavigate,
   onDappNavigation,
 }: HomeViewProps) {
-  const rotatingTexts = ["Trade Crypto's Volatility.", "Without Permission.", "Buy Calls. Drop Puts.", "Stay in Control."]
 
   return (
     <div className="min-h-screen pt-16">
