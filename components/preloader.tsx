@@ -12,15 +12,24 @@ export function Preloader({ onLoadComplete }: PreloaderProps) {
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
+    // Prevent body scroll while preloader is active
+    document.body.style.overflow = 'hidden'
+    
     const timer = setTimeout(() => {
       setFadeOut(true)
       setTimeout(() => {
         setIsLoading(false)
         onLoadComplete()
+        // Restore body scroll after preloader completes
+        document.body.style.overflow = ''
       }, 500) // Wait for fade out animation
     }, 2000) // Show preloader for 2 seconds
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      // Ensure scroll is restored if component unmounts
+      document.body.style.overflow = ''
+    }
   }, [onLoadComplete])
 
   if (!isLoading) return null
@@ -28,6 +37,14 @@ export function Preloader({ onLoadComplete }: PreloaderProps) {
   return (
     <div
       className={`fixed inset-0 z-[100] flex items-center justify-center bg-background ${fadeOut ? "fade-out" : ""}`}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden'
+      }}
     >
       <div className="flex flex-col items-center space-y-6">
         <div className="relative">
