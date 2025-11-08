@@ -180,7 +180,7 @@ export default function Home() {
         style={{ position: "fixed" }}
       >
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-          <div className="flex items-center group cursor-pointer" onClick={() => handleNavigation("home")}>
+          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => handleNavigation("home")}>
             <Image
               src="/logo.png"
               alt="Rely Exchange Logo"
@@ -189,6 +189,7 @@ export default function Home() {
               className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
             />
           </div>
+          {/* </CHANGE> */}
 
           <nav className="hidden md:flex items-center justify-center space-x-1 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
             <button
@@ -321,7 +322,7 @@ export default function Home() {
       <footer className="border-t bg-background/50 backdrop-blur-sm">
         <div className="container flex flex-col items-center justify-between gap-6 py-12 md:h-24 md:flex-row md:py-0 px-4 md:px-6">
           <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-            <div className="flex items-center group cursor-pointer" onClick={() => handleNavigation("home")}>
+            <div className="flex items-center gap-2 group cursor-pointer" onClick={() => handleNavigation("home")}>
               <Image
                 src="/logo.png"
                 alt="Rely Exchange Logo"
@@ -330,12 +331,16 @@ export default function Home() {
                 className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
               />
             </div>
+            {/* </CHANGE> */}
             <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-left font-light">
               © {currentYear} Rely Exchange. All rights reserved.
             </p>
           </div>
           <div className="flex items-center space-x-6 text-sm text-muted-foreground">
-            <button onClick={() => handleNavigation("privacy-policy")} className="hover:text-primary transition-colors duration-300 font-light">
+            <button
+              onClick={() => handleNavigation("privacy-policy")}
+              className="hover:text-primary transition-colors duration-300 font-light"
+            >
               Privacy Policy
             </button>
             <button

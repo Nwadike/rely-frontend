@@ -148,8 +148,8 @@ export function HomeView({
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full sm:w-auto px-4 pt-4">
                 <GlassButton
-                  size="xl" // Larger button size for Apple-like prominence
-                  className="gap-3 group shadow-2xl hover:shadow-primary/50 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-10 py-5 text-lg md:text-xl font-medium tracking-wide leading-[1.4] rounded-xl bg-primary text-primary-foreground border border-primary/50 hover:bg-primary/90 w-full sm:w-auto"
+                  size="xl"
+                  className="gap-3 group shadow-2xl hover:shadow-primary/50 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-10 py-5 text-lg md:text-xl font-medium tracking-wide leading-[1.4] rounded-xl bg-white/10 text-white border border-white/20 backdrop-blur-md hover:bg-white/15 hover:border-white/30 w-full sm:w-auto"
                   onClick={onDappNavigation}
                 >
                   Launch Terminal
@@ -158,13 +158,14 @@ export function HomeView({
                 <GlassButton
                   size="xl"
                   variant="outline"
-                  className="gap-3 shadow-lg hover:shadow-white/30 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-10 py-5 text-lg md:text-xl font-medium tracking-wide leading-[1.4] rounded-xl border-white/30 text-white hover:bg-white/10 w-full sm:w-auto"
+                  className="gap-3 shadow-lg hover:shadow-primary/30 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-10 py-5 text-lg md:text-xl font-medium tracking-wide leading-[1.4] rounded-xl bg-white/5 text-white border border-white/15 backdrop-blur-md hover:bg-white/10 hover:border-white/25 w-full sm:w-auto"
                   onClick={() => onNavigate("presale")}
                 >
                   <AnimatedIcon icon={Coins} variant="3d" className="h-5 w-5 md:h-6 md:w-6 mr-1" />
-                  Acquire $RELY Token
+                  Buy $RELY
                 </GlassButton>
               </div>
+              {/* </CHANGE> */}
               <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 text-sm md:text-base pt-8 text-white/60">
                 <div
                   className="flex items-center gap-2 transition-all duration-300 ease-in-out hover:scale-105 group cursor-pointer animate-in fade-in slide-in-from-left-4"

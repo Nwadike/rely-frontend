@@ -35,12 +35,13 @@ export function Preloader({ onLoadComplete }: PreloaderProps) {
           <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse scale-125"></div>
           <Image
             src="/logo.png"
-            alt="Rely Exchange Logo"
+            alt="Rely Logo"
             width={80}
             height={80}
             className="w-20 h-20 logo-pulse relative z-10"
             priority
           />
+          {/* </CHANGE> */}
         </div>
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
