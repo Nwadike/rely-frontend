@@ -6,4 +6,12 @@
   position: absolute;
   top: 0;
   left: 0;
+  /* Add GPU acceleration for smoother rendering */
+  transform: translateZ(0);
+  will-change: auto;
+  backface-visibility: hidden;
+  /* Disable pointer events to improve scroll performance */
+  pointer-events: none;
+  /* Add content-visibility for better paint performance */
+  content-visibility: auto;
 }

@@ -172,14 +172,14 @@ export default function Home() {
       {!preloaderComplete && <Preloader onLoadComplete={() => setPreloaderComplete(true)} />}
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-lg border-border/50"
-            : "bg-background/60 backdrop-blur-sm supports-[backdrop-filter]:bg-background/40 border-transparent"
+            ? "bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 shadow-2xl border-border/30"
+            : "bg-background/40 backdrop-blur-md supports-[backdrop-filter]:bg-background/20 border-transparent"
         }`}
         style={{ position: "fixed" }}
       >
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center group cursor-pointer" onClick={() => handleNavigation("home")}>
             <Image
               src="/logo.png"
@@ -190,11 +190,11 @@ export default function Home() {
             />
           </div>
 
-          <nav className="hidden md:flex items-center justify-center space-x-4 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
+          <nav className="hidden md:flex items-center justify-center space-x-1 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
             <button
               onClick={() => handleNavigation("trade")}
-              className={`flex items-center gap-1 px-3 py-2 rounded-md transition-all duration-200 relative group ${
-                currentView === "trade" ? "text-primary" : "text-foreground/80 hover:text-primary"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 relative group ${
+                currentView === "trade" ? "text-primary font-semibold" : "text-foreground/70 hover:text-primary"
               }`}
             >
               <div className="transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
@@ -287,8 +287,8 @@ export default function Home() {
             </DropdownMenu>
           </nav>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <GlassButton size="sm" onClick={handleLogin}>
+          <div className="hidden md:flex items-center space-x-3">
+            <GlassButton size="sm" className="px-6 py-2 rounded-lg font-medium" onClick={handleLogin}>
               Launch App
             </GlassButton>
           </div>
@@ -318,8 +318,8 @@ export default function Home() {
 
       <main className="flex-1 overflow-x-hidden">{renderCurrentView()}</main>
 
-      <footer className="border-t bg-background">
-        <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
+      <footer className="border-t bg-background/50 backdrop-blur-sm">
+        <div className="container flex flex-col items-center justify-between gap-6 py-12 md:h-24 md:flex-row md:py-0 px-4 md:px-6">
           <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
             <div className="flex items-center group cursor-pointer" onClick={() => handleNavigation("home")}>
               <Image
@@ -330,17 +330,17 @@ export default function Home() {
                 className="w-6 h-6 transition-transform duration-300 group-hover:scale-110"
               />
             </div>
-            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+            <p className="text-center text-sm leading-relaxed text-muted-foreground md:text-left font-light">
               © {currentYear} Rely Exchange. All rights reserved.
             </p>
           </div>
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-            <button onClick={() => handleNavigation("privacy-policy")} className="hover:text-primary transition-colors">
+          <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+            <button onClick={() => handleNavigation("privacy-policy")} className="hover:text-primary transition-colors duration-300 font-light">
               Privacy Policy
             </button>
             <button
               onClick={() => handleNavigation("terms-of-service")}
-              className="hover:text-primary transition-colors"
+              className="hover:text-primary transition-colors duration-300 font-light"
             >
               Terms of Service
             </button>

@@ -23,32 +23,32 @@ export function TradeView() {
   const features = [
     {
       icon: TrendingUp,
-      title: "Call Options",
-      description: "Predict price increases and earn 85% profit when you're correct.",
+      title: "CALL Contracts (Up)",
+      description: "Acquire a CALL contract to speculate on an asset's price increase over a defined period. Fixed payout of up to 85% on expiry.",
       color: "text-green-500",
       bgColor: "from-green-500/20 to-green-500/10",
       borderColor: "border-green-500/20",
     },
     {
       icon: TrendingDown,
-      title: "Put Options",
-      description: "Predict price decreases and earn 85% profit when you're correct.",
+      title: "PUT Contracts (Down)",
+      description: "Acquire a PUT contract to speculate on an asset's price decrease over a defined period. Fixed payout of up to 85% on expiry.",
       color: "text-red-500",
       bgColor: "from-red-500/20 to-red-500/10",
       borderColor: "border-red-500/20",
     },
     {
       icon: Clock,
-      title: "Multiple Timeframes",
-      description: "Choose from 1-minute to 24-hour expiry times for maximum flexibility.",
+      title: "Flexible Expiry Windows",
+      description: "Define your contract duration, from short-term volatility captures to longer-term market views. Full control over expiry.",
       color: "text-blue-500",
       bgColor: "from-blue-500/20 to-blue-500/10",
       borderColor: "border-blue-500/20",
     },
     {
       icon: Activity,
-      title: "Real-Time Execution",
-      description: "Instant trade execution with live price feeds from multiple oracles.",
+      title: "Instant On-Chain Settlement",
+      description: "Leverage decentralized oracles for transparent, tamper-proof price feeds and instant, trustless settlement upon contract expiry.",
       color: "text-purple-500",
       bgColor: "from-purple-500/20 to-purple-500/10",
       borderColor: "border-purple-500/20",
@@ -63,49 +63,49 @@ export function TradeView() {
     },
     {
       step: "2",
-      title: "Make Your Prediction",
-      description: "Select CALL if you predict the price will go up, or PUT if you predict it will go down.",
+      title: "Define Contract Direction",
+      description: "Choose CALL (Up) or PUT (Down) based on your market conviction. This defines the contract's strike condition.",
     },
     {
       step: "3",
-      title: "Set Your Investment",
-      description: "Enter the amount you want to invest. Remember, you can earn 85% profit or lose your investment.",
+      title: "Determine Collateral",
+      description: "Specify the amount of collateral to secure your position. Your maximum risk is limited to this amount.",
     },
     {
       step: "4",
-      title: "Choose Expiry Time",
-      description: "Select when your prediction will be evaluated - from 1 minute to 24 hours.",
+      title: "Set Expiry Time",
+      description: "Select the precise time for the contract to be evaluated against the oracle price.",
     },
     {
       step: "5",
-      title: "Execute & Monitor",
-      description: "Confirm your trade and watch it in real-time. Results are automatically settled at expiry.",
+      title: "Execute and Settle",
+      description: "Confirm the transaction. The contract is minted on-chain and automatically settles upon expiry.",
     },
   ]
 
   const riskFactors = [
     {
       icon: AlertTriangle,
-      title: "High Risk, High Reward",
+      title: "Fixed-Risk Exposure",
       description:
-        "Options trading carries significant risk. You can lose 100% of your invested capital if your prediction is incorrect.",
+        "Your maximum loss is capped at the collateral you commit to the contract. The potential for high returns is balanced by the risk of total loss of collateral.",
     },
     {
       icon: Target,
-      title: "All-or-Nothing Outcome",
+      title: "Binary Outcome Structure",
       description:
-        "Unlike traditional trading, options are binary - you either win 85% profit or lose your entire investment.",
+        "The contract is binary: it either expires 'In-the-Money' for a fixed return, or 'Out-of-the-Money,' resulting in the loss of the collateral.",
     },
     {
       icon: BarChart3,
-      title: "Market Volatility",
-      description: "Cryptocurrency markets are highly volatile. Prices can change rapidly and unpredictably.",
+      title: "Volatility and Expiry",
+      description: "The short-term nature of these contracts means high market volatility can rapidly impact the outcome at the moment of expiry.",
     },
     {
       icon: Shield,
-      title: "No Partial Wins",
+      title: "Strict Expiry Condition",
       description:
-        "Even if the price moves in your direction but doesn't meet the threshold, you may still lose your investment.",
+        "The contract must meet the exact condition at the moment of expiry. Near-misses still result in an unsuccessful contract.",
     },
   ]
 
@@ -124,14 +124,13 @@ export function TradeView() {
                   className="inline-flex bg-primary text-primary-foreground transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg animate-breathe px-3 py-1 md:px-4 md:py-1.5 text-xs md:text-sm font-medium rounded-lg"
                   variant="secondary"
                 >
-                  Binary Options Trading
+                  Fixed-Return Options (FRO)
                 </Badge>
                 <h1 className="text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] xl:text-[72px] font-light tracking-[0.5px] leading-[1.1] max-w-5xl transition-all duration-300 ease-in-out px-4">
-                  Trade with <span className="text-foreground">Precision</span>
+                  Trade Volatility with <span className="text-foreground">Decentralized Precision</span>
                 </h1>
                 <p className="max-w-[750px] text-base sm:text-lg md:text-[20px] leading-[1.6] text-muted-foreground mx-auto transition-all duration-300 ease-in-out hover:text-foreground/90 px-4">
-                  Execute binary options trades on cryptocurrency pairs with up to 85% profit potential. Predict market
-                  movements with CALL and PUT options across multiple timeframes.
+                  Execute Execute fully collateralized, on-chain options contracts on cryptocurrency pairs. Predict market direction with CALL (Up) and PUT (Down) contracts and achieve up to 85% fixed return on successful trades.imeframes.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto px-4">
@@ -195,9 +194,9 @@ export function TradeView() {
         <div className="container px-4 md:px-6">
           <ScrollReveal>
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Profit & Loss Structure</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Transparent Payout Mechanics</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Understand the transparent payout structure before you trade.
+                Clarity on every trade. Our fixed-return structure ensures you know your maximum profit and loss before execution.
               </p>
             </div>
           </ScrollReveal>
@@ -211,7 +210,7 @@ export function TradeView() {
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-500/10">
                         <CheckCircle className="h-6 w-6 text-green-500" />
                       </div>
-                      <h3 className="text-2xl font-bold text-green-500">Winning Trade</h3>
+                      <h3 className="text-2xl font-bold text-green-500">Successful Contract Expiry</h3>
                     </div>
                     <div className="space-y-4">
                       <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
@@ -240,7 +239,7 @@ export function TradeView() {
                       <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-red-500/20 to-red-500/10">
                         <XCircle className="h-6 w-6 text-red-500" />
                       </div>
-                      <h3 className="text-2xl font-bold text-red-500">Losing Trade</h3>
+                      <h3 className="text-2xl font-bold text-red-500">Unsuccessful Contract Expiry</h3>
                     </div>
                     <div className="space-y-4">
                       <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
@@ -264,14 +263,14 @@ export function TradeView() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* The Trading Workflow */}
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <ScrollReveal>
             <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">How It Works</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">The Trading Workflow</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Follow these simple steps to start trading binary options on Rely Exchange.
+                A streamlined, intuitive process to execute your first decentralized options contract. From wallet connection to settlement.
               </p>
             </div>
           </ScrollReveal>
@@ -309,10 +308,9 @@ export function TradeView() {
                 <AlertTriangle className="h-4 w-4 mr-2" />
                 Important Risk Disclosure
               </Badge>
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Understand the Risks</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Risk Disclosure and Transparency</h2>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-                Binary options trading involves substantial risk. Please read and understand these risk factors before
-                trading.
+           Trading Fixed-Return Options involves significant risk. We prioritize transparency so you can trade responsibly.             trading.
               </p>
             </div>
           </ScrollReveal>
@@ -364,17 +362,16 @@ export function TradeView() {
           <ScrollReveal>
             <div className="flex flex-col items-center justify-center space-y-8 text-center">
               <div className="space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Ready to Start Trading?</h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Ready to Trade with Confidence?</h2>
                 <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl">
-                  Join thousands of traders executing binary options on cryptocurrency pairs with transparent mechanics
-                  and instant settlements.
+                  Join thousanJoin the decentralized revolution. Experience the power of fixed-return options with transparent, on-chain mechanics and instant, trustless settlement.ments.
                 </p>
               </div>
               <GlassButton
                 size="lg"
                 className="gap-2 group shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out hover:scale-105"
               >
-                Launch Trading Platform
+                Launch Terminal
                 <AnimatedIcon icon={Zap} variant="bounce" className="h-5 w-5" />
               </GlassButton>
             </div>

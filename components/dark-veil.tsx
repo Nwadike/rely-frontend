@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl"
 import "./dark-veil.css"
 
@@ -95,6 +95,9 @@ export default function DarkVeil({
   resolutionScale = 1,
 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isPageVisible, setIsPageVisible] = useState(true)
+
   useEffect(() => {
     const canvas = ref.current as HTMLCanvasElement
     if (!canvas) {
@@ -106,10 +109,26 @@ export default function DarkVeil({
       return
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 },
+    )
+
+    observer.observe(canvas)
+
+    const handleVisibilityChange = () => {
+      setIsPageVisible(!document.hidden)
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
     try {
       const renderer = new Renderer({
-        dpr: Math.min(window.devicePixelRatio, 2),
+        dpr: Math.min(window.devicePixelRatio, 1.5),
         canvas,
+        alpha: false,
       })
 
       const gl = renderer.gl
@@ -139,13 +158,35 @@ export default function DarkVeil({
         program.uniforms.uResolution.value.set(w, h)
       }
 
-      window.addEventListener("resize", resize)
+      let resizeTimeout: NodeJS.Timeout
+      const debouncedResize = () => {
+        clearTimeout(resizeTimeout)
+        resizeTimeout = setTimeout(resize, 150)
+      }
+
+      window.addEventListener("resize", debouncedResize)
       resize()
 
       const start = performance.now()
       let frame = 0
+      const targetFPS = 30
+      const frameInterval = 1000 / targetFPS
+      let lastFrameTime = 0
 
-      const loop = () => {
+      const loop = (currentTime: number) => {
+        frame = requestAnimationFrame(loop)
+
+        if (!isVisible || !isPageVisible) {
+          return
+        }
+
+        const elapsed = currentTime - lastFrameTime
+        if (elapsed < frameInterval) {
+          return
+        }
+
+        lastFrameTime = currentTime - (elapsed % frameInterval)
+
         program.uniforms.uTime.value = ((performance.now() - start) / 1000) * speed
         program.uniforms.uHueShift.value = hueShift
         program.uniforms.uNoise.value = noiseIntensity
@@ -153,19 +194,31 @@ export default function DarkVeil({
         program.uniforms.uScanFreq.value = scanlineFrequency
         program.uniforms.uWarp.value = warpAmount
         renderer.render({ scene: mesh })
-        frame = requestAnimationFrame(loop)
       }
 
-      loop()
+      loop(0)
 
       return () => {
         cancelAnimationFrame(frame)
-        window.removeEventListener("resize", resize)
+        window.removeEventListener("resize", debouncedResize)
+        clearTimeout(resizeTimeout)
+        observer.disconnect()
+        document.removeEventListener("visibilitychange", handleVisibilityChange)
       }
     } catch (error) {
       console.error("Error initializing DarkVeil:", error)
     }
-  }, [hueShift, noiseIntensity, scanlineIntensity, speed, scanlineFrequency, warpAmount, resolutionScale])
+  }, [
+    hueShift,
+    noiseIntensity,
+    scanlineIntensity,
+    speed,
+    scanlineFrequency,
+    warpAmount,
+    resolutionScale,
+    isVisible,
+    isPageVisible,
+  ])
 
   return <canvas ref={ref} className="darkveil-canvas" />
 }
