@@ -119,7 +119,7 @@ export function SupportView({ onDappNavigation }: SupportViewProps) {
               </p>
               <GlassButton
                 className="gap-2 group shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-8 py-3 text-base font-medium rounded-lg"
-                onClick={() => window.open("https://t.me/rely_exchange", "_blank")}
+                onClick={() => window.open("https://t.me/relyexchange", "_blank")}
               >
                 Contact Support
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

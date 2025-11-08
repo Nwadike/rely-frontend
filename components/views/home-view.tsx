@@ -300,7 +300,7 @@ export function HomeView({
                 <GlassButton
                   size="lg"
                   className="gap-3 group shadow-xl hover:shadow-primary/50 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-8 py-4 text-lg font-medium tracking-wide leading-[1.4] rounded-xl bg-primary text-primary-foreground border border-primary/50 hover:bg-primary/90 w-full min-[400px]:w-auto"
-                  onClick={() => window.open("https://x.com/rely_exchange", "_blank")}
+                  onClick={() => window.open("https://x.com/relyexchange", "_blank")}
                 >
                   <AnimatedIcon icon={Twitter} variant="3d" className="h-5 w-5 text-white" />
                   <span>Follow on X</span>
@@ -311,7 +311,7 @@ export function HomeView({
                   size="lg"
                   variant="outline"
                   className="gap-3 shadow-lg hover:shadow-white/30 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[0.98] px-8 py-4 text-lg font-medium tracking-wide leading-[1.4] rounded-xl border-white/30 text-foreground hover:bg-white/10 w-full min-[400px]:w-auto"
-                  onClick={() => window.open("https://t.me/rely_exchange", "_blank")}
+                  onClick={() => window.open("https://t.me/relyexchange", "_blank")}
                 >
                   <AnimatedIcon icon={Send} variant="3d" className="h-5 w-5 text-primary" />
                   <span>Join the DAO</span>
