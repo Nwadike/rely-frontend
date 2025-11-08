@@ -3,36 +3,29 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-interface PreloaderProps {
-  onLoadComplete: () => void
-}
+import { usePreloader } from "@/contexts/PreloaderContext"
 
-export function Preloader({ onLoadComplete }: PreloaderProps) {
-  const [isLoading, setIsLoading] = useState(true)
+// ... existing code ...
+
+export default function Preloader({ onLoadComplete }: { onLoadComplete: () => void }) {
+  const { isPreloading, setPreloading } = usePreloader()
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    // Prevent body scroll while preloader is active
-    document.body.style.overflow = 'hidden'
-    
-    const timer = setTimeout(() => {
-      setFadeOut(true)
-      setTimeout(() => {
-        setIsLoading(false)
-        onLoadComplete()
-        // Restore body scroll after preloader completes
-        document.body.style.overflow = ''
-      }, 500) // Wait for fade out animation
-    }, 2000) // Show preloader for 2 seconds
+    if (isPreloading) {
+      const timer = setTimeout(() => {
+        setFadeOut(true)
+        setTimeout(() => {
+          setPreloading(false)
+          onLoadComplete()
+        }, 500) // Wait for fade out animation
+      }, 2000) // Show preloader for 2 seconds
 
-    return () => {
-      clearTimeout(timer)
-      // Ensure scroll is restored if component unmounts
-      document.body.style.overflow = ''
+      return () => clearTimeout(timer)
     }
-  }, [onLoadComplete])
+  }, [isPreloading, setPreloading])
 
-  if (!isLoading) return null
+  if (!isPreloading) return null
 
   return (
     <div

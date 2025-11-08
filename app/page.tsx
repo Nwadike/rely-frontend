@@ -45,7 +45,6 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [featuresLoaded, setFeaturesLoaded] = useState(false)
   const [stepsLoaded, setStepsLoaded] = useState(false)
-  const [preloaderComplete, setPreloaderComplete] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [currentView, setCurrentView] = useState<ViewType>("home")
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
@@ -106,17 +105,18 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    document.documentElement.style.overflowX = "hidden"
-    document.body.style.overflowX = "hidden"
-
-    return () => {
-      document.documentElement.style.overflowX = ""
-      document.body.style.overflowX = ""
+    // Scroll locking for mobile menu is now handled in layout
+    if (isMobileMenuOpen) {
+      document.documentElement.style.overflow = "hidden"
+      document.body.style.overflow = "hidden"
+    } else {
+      document.documentElement.style.overflow = ""
+      document.body.style.overflow = ""
     }
-  }, [])
 
-  useEffect(() => {
-    if (!isMobileMenuOpen) {
+    // Cleanup function to restore scrolling when the component unmounts
+    return () => {
+      document.documentElement.style.overflow = ""
       document.body.style.overflow = ""
     }
   }, [isMobileMenuOpen])
@@ -167,9 +167,19 @@ export default function Home() {
     }
   }
 
-  return (
-    <>
-      {!preloaderComplete && <Preloader onLoadComplete={() => setPreloaderComplete(true)} />}
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [isLoading])
+
+    return (
+      <>
+        {isLoading && <Preloader onLoadComplete={() => setIsLoading(false)} />}
 
       <header
         className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-500 ease-in-out ${
@@ -317,7 +327,7 @@ export default function Home() {
         onNavigate={handleNavigation}
       />
 
-      <main className="flex-1 overflow-x-hidden">{renderCurrentView()}</main>
+      <main className="flex-1">{renderCurrentView()}</main>
 
       <footer className="border-t bg-background/50 backdrop-blur-sm">
         <div className="container flex flex-col items-center justify-between gap-6 py-12 md:h-24 md:flex-row md:py-0 px-4 md:px-6">

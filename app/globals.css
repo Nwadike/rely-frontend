@@ -23,6 +23,9 @@ body {
   .scroll-optimized {
     contain: layout style paint;
   }
+body {
+    overflow: hidden;
+  }
 }
 
 @layer base {
@@ -123,7 +126,7 @@ body {
   html {
     scroll-behavior: smooth;
     /* Optimize scrolling performance */
-    overflow-x: hidden;
+  
   }
 }
 
