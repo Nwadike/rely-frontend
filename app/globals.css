@@ -23,9 +23,6 @@ body {
   .scroll-optimized {
     contain: layout style paint;
   }
-body {
-    overflow: hidden;
-  }
 }
 
 @layer base {
@@ -126,7 +123,7 @@ body {
   html {
     scroll-behavior: smooth;
     /* Optimize scrolling performance */
-  
+    overflow-x: hidden;
   }
 }
 
@@ -261,6 +258,12 @@ body {
 
 .fade-out {
   animation: fade-out 500ms ease-in-out forwards;
+}
+
+/* Prevent body scroll when preloader is active */
+body.preloader-active {
+  overflow: hidden;
+  height: 100vh;
 }
 
 /* Added logo-pulse animation for preloader logo */

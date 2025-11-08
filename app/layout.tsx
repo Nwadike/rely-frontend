@@ -36,34 +36,24 @@ export const metadata: Metadata = {
   },
 }
 
-import { PreloaderProvider, usePreloader } from "@/contexts/PreloaderContext"
-
-// ... existing code ...
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ... existing head elements ... */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <PreloaderProvider>
-        <AppBody>{children}</AppBody>
-      </PreloaderProvider>
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
-  )
-}
-
-function AppBody({ children }: { children: React.ReactNode }) {
-  return (
-    <body className={inter.className}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="dark"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
-    </body>
   )
 }

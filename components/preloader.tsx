@@ -3,40 +3,47 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-import { usePreloader } from "@/contexts/PreloaderContext"
+interface PreloaderProps {
+  onLoadComplete: () => void
+}
 
-// ... existing code ...
-
-export default function Preloader({ onLoadComplete }: { onLoadComplete: () => void }) {
-  const { isPreloading, setPreloading } = usePreloader()
+export function Preloader({ onLoadComplete }: PreloaderProps) {
+  const [isLoading, setIsLoading] = useState(true)
   const [fadeOut, setFadeOut] = useState(false)
 
   useEffect(() => {
-    if (isPreloading) {
-      const timer = setTimeout(() => {
-        setFadeOut(true)
-        setTimeout(() => {
-          setPreloading(false)
-          onLoadComplete()
-        }, 500) // Wait for fade out animation
-      }, 2000) // Show preloader for 2 seconds
+    // Add class to prevent body scroll
+    document.body.classList.add('preloader-active')
+    
+    const timer = setTimeout(() => {
+      setFadeOut(true)
+      setTimeout(() => {
+        setIsLoading(false)
+        // Remove class to allow scrolling
+        document.body.classList.remove('preloader-active')
+        onLoadComplete()
+      }, 500) // Wait for fade out animation
+    }, 2000) // Show preloader for 2 seconds
 
-      return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      // Clean up: remove class if component unmounts
+      document.body.classList.remove('preloader-active')
     }
-  }, [isPreloading, setPreloading])
+  }, [onLoadComplete])
 
-  if (!isPreloading) return null
+  if (!isLoading) return null
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-background ${fadeOut ? "fade-out" : ""}`}
-      style={{
+      className={`fixed top-0 left-0 w-full h-screen z-[100] flex items-center justify-center bg-background ${fadeOut ? "fade-out" : ""}`}
+      style={{ 
         position: 'fixed',
         top: 0,
         left: 0,
         width: '100vw',
         height: '100vh',
-        overflow: 'hidden'
+        zIndex: 100
       }}
     >
       <div className="flex flex-col items-center space-y-6">
