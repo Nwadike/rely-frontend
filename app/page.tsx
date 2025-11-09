@@ -177,7 +177,6 @@ export default function Home() {
             ? "bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 shadow-2xl border-border/30"
             : "bg-background/40 backdrop-blur-md supports-[backdrop-filter]:bg-background/20 border-transparent"
         }`}
-        style={{ position: "fixed" }}
       >
         <div className="container flex h-16 items-center justify-between px-4 md:px-6">
           <div className="flex items-center gap-2 group cursor-pointer" onClick={() => handleNavigation("home")}>
