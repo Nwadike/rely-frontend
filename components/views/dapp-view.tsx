@@ -129,7 +129,7 @@ export function DappView() {
                     size="sm"
                     variant="ghost"
                     className="gap-1"
-                    onClick={() => window.open("https://x.com/relyexchange", "_blank")}
+                    onClick={() => window.open("https://x.com/rely_exchange", "_blank")}
                   >
                     <AnimatedIcon icon={Twitter} variant="3d" className="h-4 w-4 text-blue-400" />
                     Twitter
@@ -138,7 +138,7 @@ export function DappView() {
                     size="sm"
                     variant="ghost"
                     className="gap-1"
-                    onClick={() => window.open("https://t.me/relyexchange", "_blank")}
+                    onClick={() => window.open("https://t.me/rely_exchange", "_blank")}
                   >
                     <AnimatedIcon icon={Send} variant="3d" className="h-4 w-4 text-blue-500" />
                     Telegram

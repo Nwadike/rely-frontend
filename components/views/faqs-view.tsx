@@ -155,7 +155,7 @@ export function FAQsView({ onDappNavigation }: FAQsViewProps) {
                 size="lg"
                 variant="secondary"
                 className="gap-2 group shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out hover:scale-105 active:scale-[0.97] px-8 py-4 text-[18px] font-medium tracking-[0.5px] leading-[1.4] rounded-lg"
-                onClick={() => window.open("https://t.me/relyexchange", "_blank")}
+                onClick={() => window.open("https://t.me/rely_exchange", "_blank")}
               >
                 Contact Us
                 <AnimatedIcon icon={ArrowUpRight} variant="bounce" className="h-5 w-5" />
