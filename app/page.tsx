@@ -172,7 +172,7 @@ export default function Home() {
       {!preloaderComplete && <Preloader onLoadComplete={() => setPreloaderComplete(true)} />}
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full border-b transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-[100] w-full border-b transition-all duration-500 ease-in-out ${
           isScrolled
             ? "bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 shadow-2xl border-border/30"
             : "bg-background/40 backdrop-blur-md supports-[backdrop-filter]:bg-background/20 border-transparent"
@@ -317,7 +317,7 @@ export default function Home() {
         onNavigate={handleNavigation}
       />
 
-      <main className="flex-1 overflow-x-hidden">{renderCurrentView()}</main>
+      <main className="flex-1 overflow-x-hidden pt-16">{renderCurrentView()}</main>
 
       <footer className="border-t bg-background/50 backdrop-blur-sm">
         <div className="container flex flex-col items-center justify-between gap-6 py-12 md:h-24 md:flex-row md:py-0 px-4 md:px-6">

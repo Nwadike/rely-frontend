@@ -103,8 +103,7 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    /* Enable GPU acceleration for smoother scrolling */
-    transform: translateZ(0);
+    /* Removed transform: translateZ(0) to fix fixed positioning stacking context */
   }
   h1,
   h2,
