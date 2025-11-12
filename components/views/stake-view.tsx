@@ -418,7 +418,7 @@ export function StakeView() {
                         <div>
                           <div className="font-bold mb-1">Monthly Earnings</div>
                           <div className="text-sm text-muted-foreground">
-                            After 30 days with consistent trading activity, you've earned approximately $104 (1.04%
+                            After 30 days with consistent trading activity, you've earned approximately $1,250 (12.5%
                             monthly return) from your $10,000 stake, with your principal fully protected.
                           </div>
                         </div>
