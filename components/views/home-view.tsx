@@ -107,7 +107,7 @@ export function HomeView({
   const rotatingTexts = ["Trade Crypto Volatility.", "Without Permission.", "Buy Calls. Drop Puts.", "Stay in Control."]
 
   return (
-    <div className="min-h-screen pt-16">
+    <div className="min-h-screen">
       {/* Hero Section: Sleek, Minimal, High-Impact */}
       <section className="w-full py-24 sm:py-32 md:py-40 lg:py-56 relative overflow-hidden bg-black">
         <Suspense fallback={<div className="absolute inset-0 bg-black" />}>
